@@ -6,59 +6,74 @@
     <title>Ameer Wolf | Pro Media Organizer</title>
     <style>
         body {
-            background-color: #0d0d0d; /* أسود غامق */
+            background-color: #0d0d0d;
             color: #ffffff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
             margin: 0;
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
         }
-        .card {
+        .container {
+            max-width: 800px;
             text-align: center;
-            padding: 40px;
-            border: 2px solid #ff0000; /* إطار أحمر نيون */
-            border-radius: 20px;
-            background: #1a1a1a;
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
-            max-width: 400px;
         }
         h1 {
             color: #ff0000;
-            font-size: 2.8rem;
-            margin: 0;
+            font-size: 3rem;
+            margin-bottom: 5px;
             letter-spacing: 2px;
         }
-        .status {
+        .version-badge {
             background: #ff0000;
-            color: white;
             padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 0.8rem;
+            border-radius: 20px;
             font-weight: bold;
-            display: inline-block;
-            margin: 10px 0;
-        }
-        p {
-            font-size: 1.1rem;
-            color: #bbb;
-            line-height: 1.6;
-        }
-        .footer {
-            margin-top: 20px;
             font-size: 0.9rem;
-            color: #666;
+        }
+        .description {
+            color: #bbb;
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+        .app-image {
+            width: 100%;
+            max-width: 700px;
+            border: 3px solid #333;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
+            margin: 20px 0;
+            transition: 0.3s;
+        }
+        .app-image:hover {
+            transform: scale(1.02);
+            border-color: #ff0000;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 40px;
+            background-color: #ff0000;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
         }
     </style>
 </head>
 <body>
-    <div class="card">
+    <div class="container">
         <h1>AMEER WOLF</h1>
-        <div class="status">v2.2 Live & Ready</div>
-        <p>متخصص في تطوير حلول تنظيم وإدارة الوسائط الرقمية باحترافية عالية.</p>
-        <div class="footer">© 2026 Ameer Wolf Pro Media</div>
+        <span class="version-badge">Pro Media Organizer v2.2</span>
+        <p class="description">الحل الأمثل والاحترافي لتنظيم وإدارة الوسائط الرقمية الضخمة.</p>
+        
+        <img src="app-preview.jpg" alt="Ameer Wolf Interface" class="app-image">
+        
+        <br>
+        <a href="https://facebook.com/YOUR_PAGE" class="btn">تابع التحديثات على فيسبوك</a>
     </div>
 </body>
 </html>
