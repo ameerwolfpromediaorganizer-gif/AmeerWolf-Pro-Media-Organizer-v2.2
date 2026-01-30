@@ -24,6 +24,7 @@
             font-size: 3rem;
             margin-bottom: 5px;
             letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
         }
         .version-badge {
             background: #ff0000;
@@ -31,36 +32,45 @@
             border-radius: 20px;
             font-weight: bold;
             font-size: 0.9rem;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
         }
         .description {
             color: #bbb;
             font-size: 1.2rem;
-            margin: 20px 0;
+            margin: 25px 0;
         }
         .app-image {
             width: 100%;
             max-width: 700px;
-            border: 3px solid #333;
+            border: 2px solid #333;
             border-radius: 15px;
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
-            margin: 20px 0;
-            transition: 0.3s;
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.3);
+            margin: 10px 0;
+            transition: 0.4s;
         }
         .app-image:hover {
-            transform: scale(1.02);
+            transform: translateY(-5px);
             border-color: #ff0000;
         }
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 15px 40px;
-            background-color: #ff0000;
+        .btn-facebook {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+            padding: 15px 35px;
+            background-color: #1877F2; /* لون فيسبوك الرسمي */
             color: white;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 50px;
             font-weight: bold;
             font-size: 1.1rem;
-            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(24, 119, 242, 0.4);
+        }
+        .btn-facebook:hover {
+            background-color: #1565c0;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(24, 119, 242, 0.6);
         }
     </style>
 </head>
@@ -68,12 +78,14 @@
     <div class="container">
         <h1>AMEER WOLF</h1>
         <span class="version-badge">Pro Media Organizer v2.2</span>
-        <p class="description">الحل الأمثل والاحترافي لتنظيم وإدارة الوسائط الرقمية الضخمة.</p>
+        <p class="description">الحل الذكي والمبتكر لتنظيم وإدارة الوسائط الرقمية باحترافية.</p>
         
         <img src="app-preview.jpg" alt="Ameer Wolf Interface" class="app-image">
         
         <br>
-        <a href="https://facebook.com/YOUR_PAGE" class="btn">تابع التحديثات على فيسبوك</a>
+        <a href="https://www.facebook.com/AmeerWolfOfficial" class="btn-facebook">
+            <span>تابعنا على فيسبوك</span>
+        </a>
     </div>
 </body>
 </html>
