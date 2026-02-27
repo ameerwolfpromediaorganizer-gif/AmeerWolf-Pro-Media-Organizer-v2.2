@@ -53,28 +53,24 @@
             flex-wrap: wrap;
             margin-top: 10px;
         }
-        /* تنسيق الأزرار الموحد مع القوة الضاربة */
-        .btn {
-            padding: 12px 30px !important;
-            border-radius: 50px !important;
-            font-weight: bold !important;
-            text-decoration: none !important;
-            color: #ffffff !important;
-            transition: 0.3s !important;
-            font-size: 1rem !important;
-            display: inline-block !important;
-            border: none !important;
-            cursor: pointer !important;
-            text-align: center !important;
+        /* تصميم الأزرار الموحد */
+        .btn-custom {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #ffffff;
+            transition: 0.3s;
+            font-size: 1rem;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            background-color: #1877F2; /* لون الفيسبوك */
+            box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3);
         }
-        /* توحيد اللون الأزرق (فيسبوك) للزرين */
-        .btn-facebook, .btn-buy {
-            background-color: #1877F2 !important;
-            box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3) !important;
-        }
-        .btn-facebook:hover, .btn-buy:hover {
-            transform: scale(1.05) !important;
-            background-color: #1565c0 !important;
+        .btn-custom:hover {
+            transform: scale(1.05);
+            background-color: #1565c0;
         }
     </style>
 </head>
@@ -87,9 +83,9 @@
         <img src="app-preview.jpg" alt="Ameer Wolf Interface" class="app-image">
         
         <div class="button-group">
-            <a href="https://www.facebook.com/share/1C4ctWAGJS/?mibextid=wwXIfr" class="btn btn-facebook">تابعنا على فيسبوك</a>
+            <a href="https://www.facebook.com/share/1C4ctWAGJS/?mibextid=wwXIfr" class="btn-custom">تابعنا على فيسبوك</a>
             
-            <a href="https://payhip.com/b/RQBk7" class="payhip-buy-button btn btn-buy" data-product="RQBk7">اشترِ الآن (29.99$)</a>
+            <a href="https://payhip.com/b/RQBk7" class="payhip-buy-button btn-custom" data-product="RQBk7">اشترِ الآن (29.99$)</a>
         </div>
     </div>
 </body>
