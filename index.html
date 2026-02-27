@@ -98,27 +98,33 @@
             transform: scale(1.05);
         }
 
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>AMEER WOLF</h1>
-        <span class="version-badge">Pro Media Organizer v2.2</span>
-        <p class="description">النظام الأقوى لتنظيم وأرشفة الوسائط الرقمية.</p>
-        
-        <img src="app-preview.jpg" alt="Ameer Wolf Interface" class="app-image">
-        
-        <div class="button-group">
-            <a href="https://www.facebook.com/share/1C4ctWAGJS/?mibextid=wwXIfr" class="btn-custom">
-                تابعنا على فيسبوك
-            </a>
-            
-            <a href="https://payhip.com/b/RQBk7"
-               class="payhip-buy-button btn-custom"
-               data-product="RQBk7">
-               اشترِ الآن (29.99$)
-            </a>
-        </div>
+<style>
+.payhip-buy-button {
+    background: #1877F2 !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(24,119,242,0.4) !important;
+}
+
+.payhip-buy-button * {
+    color: #ffffff !important;
+}
+
+.payhip-buy-button:hover {
+    background: #1565c0 !important;
+    transform: scale(1.05);
+}
+</style>
+
+<script>
+setInterval(()=>{
+    document.querySelectorAll(".payhip-buy-button").forEach(btn=>{
+        btn.style.background="#1877F2";
+        btn.style.color="#fff";
+    });
+},500);
+</script>
+</body>
     </div>
 </body>
 </html>
