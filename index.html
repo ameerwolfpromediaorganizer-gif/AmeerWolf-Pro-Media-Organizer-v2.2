@@ -3,227 +3,538 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ameer Wolf | Pro Media Organizer</title>
+<title>AMWO Pro Media Organizer v2.2 | Press & Done 🐺</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
+:root {
+  --red: #FF3131;
+  --red3: #cc1a1a;
+  --dark: #0a0a0a;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    background-color: #0a0a0a;
-    color: #ffffff;
-    font-family: 'Tajawal', 'Segoe UI', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 50px 20px;
-    min-height: 100vh;
-    background-image: radial-gradient(ellipse at top, #1a0000 0%, #0a0a0a 60%);
+  background: var(--dark);
+  color: #fff;
+  font-family: 'Tajawal', 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image: radial-gradient(ellipse at top, #1a000022 0%, #0a0a0a 60%);
 }
 
-.container {
-    max-width: 820px;
-    width: 100%;
-    text-align: center;
+.bg-layer {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, #FF31310f 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 80% 80%, #FF313108 0%, transparent 50%);
 }
 
-/* Header */
-.logo-line {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 8px;
+.grid-bg {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.03;
+  background-image:
+    linear-gradient(#FF3131 1px, transparent 1px),
+    linear-gradient(90deg, #FF3131 1px, transparent 1px);
+  background-size: 60px 60px;
 }
 
-.logo-line::before,
-.logo-line::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to center, transparent, #ff0000);
+header {
+  position: relative; z-index: 10;
+  padding: 28px 40px 0;
+  display: flex; align-items: center; justify-content: space-between;
 }
 
-h1 {
-    color: #ff0000;
-    font-size: 3.2rem;
-    font-weight: 900;
-    letter-spacing: 6px;
-    text-shadow: 0 0 20px rgba(255,0,0,0.6), 0 0 60px rgba(255,0,0,0.2);
-    animation: flicker 4s infinite;
+.brand { display: flex; align-items: center; gap: 12px; }
+
+.wolf-icon {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, var(--red), var(--red3));
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; box-shadow: 0 0 20px #FF313144;
 }
 
-@keyframes flicker {
-    0%, 95%, 100% { opacity: 1; }
-    96% { opacity: 0.85; }
-    97% { opacity: 1; }
-    98% { opacity: 0.9; }
+.brand-text { font-size: 0.8rem; color: #555; letter-spacing: 2px; text-transform: uppercase; }
+
+.header-right { display: flex; align-items: center; gap: 12px; }
+
+.nav-badge {
+  background: #ffffff08; border: 1px solid #ffffff11;
+  padding: 8px 18px; border-radius: 50px;
+  font-size: 0.85rem; color: #777; letter-spacing: 1px;
+}
+
+.lang-btn {
+  background: linear-gradient(135deg, var(--red), var(--red3));
+  border: none; border-radius: 50px;
+  padding: 8px 20px; font-size: 0.85rem; font-weight: 700;
+  color: #fff; cursor: pointer;
+  font-family: 'Tajawal', sans-serif; letter-spacing: 1px;
+  box-shadow: 0 2px 14px #FF313133; transition: all 0.3s;
+}
+.lang-btn:hover { transform: scale(1.06); box-shadow: 0 4px 20px #FF313155; }
+
+.hero {
+  position: relative; z-index: 10;
+  text-align: center; padding: 60px 20px 40px;
+}
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #FF313111; border: 1px solid #FF313133;
+  padding: 6px 18px; border-radius: 50px;
+  font-size: 0.8rem; color: var(--red);
+  letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 20px; animation: fadeDown 0.8s ease both;
+}
+
+.wolf-small {
+  font-size: 2.2rem; display: block; margin-bottom: 10px;
+  animation: fadeDown 0.7s ease both;
+  filter: drop-shadow(0 0 12px #FF313166);
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  font-weight: 900; letter-spacing: 5px; line-height: 1.1;
+  animation: fadeDown 0.9s ease both;
+  color: var(--red); text-shadow: 0 0 30px #FF313155;
 }
 
 .version-badge {
-    display: inline-block;
-    background: linear-gradient(135deg, #ff0000, #990000);
-    padding: 5px 18px;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    margin-bottom: 18px;
-    box-shadow: 0 0 15px rgba(255,0,0,0.4);
+  display: inline-block;
+  background: linear-gradient(135deg, var(--red), var(--red3));
+  color: #fff; font-weight: 900;
+  font-size: 0.8rem; letter-spacing: 2px;
+  padding: 5px 18px; border-radius: 50px;
+  margin: 14px 0 20px; box-shadow: 0 0 15px #FF313144;
+  animation: fadeDown 1s ease both;
 }
 
-.description {
-    color: #aaa;
-    font-size: 1.15rem;
-    margin: 0 auto 30px;
-    max-width: 550px;
-    line-height: 1.8;
+.hero-desc {
+  max-width: 640px; margin: 0 auto 36px;
+  color: #888; font-size: 1.05rem; line-height: 1.9;
+  animation: fadeDown 1.1s ease both;
 }
 
-/* Main image */
-.app-image {
-    width: 100%;
-    max-width: 720px;
-    border: 1px solid #330000;
-    border-radius: 15px;
-    box-shadow: 0 0 40px rgba(255,0,0,0.25), 0 20px 60px rgba(0,0,0,0.8);
-    margin-bottom: 30px;
-    transition: transform 0.3s;
+.btn-group {
+  display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+  animation: fadeDown 1.2s ease both; margin-bottom: 50px;
 }
 
-.app-image:hover {
-    transform: scale(1.01);
+.btn {
+  padding: 14px 30px; border-radius: 50px;
+  font-weight: 700; font-size: 0.95rem;
+  text-decoration: none; color: #fff;
+  display: inline-flex; align-items: center; gap: 9px;
+  border: none; cursor: pointer;
+  font-family: 'Tajawal', sans-serif;
+  transition: all 0.3s; letter-spacing: 0.5px;
 }
 
-/* Screenshots gallery */
+.btn-main {
+  background: linear-gradient(135deg, var(--red), var(--red3));
+  box-shadow: 0 4px 28px #FF313144; color: #fff; font-weight: 900;
+  animation: pulse-red 2.5s infinite;
+}
+.btn-main:hover { transform: scale(1.06); box-shadow: 0 6px 40px #FF313166; }
+
+@keyframes pulse-red {
+  0%,100% { box-shadow: 0 4px 28px #FF313144; }
+  50%      { box-shadow: 0 4px 42px #FF313177; }
+}
+
+.btn-buy { background: linear-gradient(135deg, #1a7a1a, #0d5c0d); box-shadow: 0 4px 18px #00c80033; }
+.btn-buy:hover { transform: scale(1.05); box-shadow: 0 6px 28px #00c80055; }
+.btn-fb { background: linear-gradient(135deg, #1877F2, #1255b5); box-shadow: 0 4px 18px #1877F233; }
+.btn-fb:hover { transform: scale(1.05); }
+
+.app-showcase {
+  position: relative; z-index: 10;
+  padding: 0 20px 50px; display: flex; justify-content: center;
+}
+
+.app-frame { position: relative; max-width: 820px; width: 100%; }
+
+.app-frame::before {
+  content: ''; position: absolute; inset: -1px;
+  background: linear-gradient(135deg, #FF313144, #cc1a1a22, #FF313111);
+  border-radius: 17px; z-index: -1;
+}
+
+.app-frame::after {
+  content: ''; position: absolute; inset: -30px;
+  background: radial-gradient(ellipse at center, #FF313111 0%, transparent 70%);
+  z-index: -2;
+}
+
+.app-img {
+  width: 100%; border-radius: 14px; border: 1px solid #FF313122;
+  box-shadow: 0 0 0 1px #ffffff06, 0 20px 80px #00000099, 0 0 120px #FF31310d;
+  transition: transform 0.4s; display: block;
+}
+.app-img:hover { transform: scale(1.008); }
+
+.fake-bar {
+  background: #1a1a1a; border-radius: 14px 14px 0 0;
+  padding: 10px 16px; display: flex; align-items: center; gap: 8px;
+  border: 1px solid #FF313122; border-bottom: none;
+}
+.dot { width:12px; height:12px; border-radius:50%; }
+.dot-r{background:#ff5f57;} .dot-y{background:#ffbd2e;} .dot-g{background:#28c840;}
+.bar-title { margin-right: auto; font-size:0.8rem; color:#555; letter-spacing:1px; }
+.app-img-wrap {
+  border: 1px solid #FF313122; border-top: none;
+  border-radius: 0 0 14px 14px; overflow: hidden;
+}
+
 .screenshots {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    margin-bottom: 35px;
-    flex-wrap: wrap;
+  position: relative; z-index: 10;
+  display: flex; gap: 14px; justify-content: center;
+  padding: 0 20px 60px; flex-wrap: wrap;
 }
 
 .screenshots img {
-    width: 31%;
-    min-width: 180px;
-    border-radius: 10px;
-    border: 1px solid #2a0000;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.6);
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
+  width: 30%; min-width: 180px; border-radius: 12px;
+  border: 1px solid #FF313122; box-shadow: 0 5px 20px #00000066;
+  transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;
+}
+.screenshots img:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 10px 30px #FF313133; }
+
+.section {
+  position: relative; z-index: 10;
+  padding: 20px 20px 60px; max-width: 1000px; margin: 0 auto;
 }
 
-.screenshots img:hover {
-    transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 10px 30px rgba(255,0,0,0.3);
+.section-label {
+  text-align: center; font-size: 0.75rem; color: var(--red);
+  letter-spacing: 4px; text-transform: uppercase; margin-bottom: 14px;
 }
 
-/* Buttons */
-.button-group {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
+.section-title {
+  text-align: center;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 900; margin-bottom: 50px; color: #ddd;
 }
 
-.btn-custom {
-    padding: 13px 32px;
-    border-radius: 50px;
-    font-weight: 700;
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 1rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
-    font-family: 'Tajawal', sans-serif;
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
 }
 
-.btn-download {
-    background: linear-gradient(135deg, #ff0000, #cc0000);
-    box-shadow: 0 4px 20px rgba(255,0,0,0.4);
-    animation: pulse-red 2.5s infinite;
+.feat-card {
+  background: #ffffff04; border: 1px solid #ffffff09;
+  border-radius: 16px; padding: 28px 26px;
+  transition: all 0.3s; position: relative; overflow: hidden;
 }
 
-.btn-download:hover {
-    transform: scale(1.06);
-    box-shadow: 0 6px 30px rgba(255,0,0,0.6);
+.feat-card::before {
+  content: ''; position: absolute; top: 0; right: 0;
+  width: 60px; height: 60px;
+  background: radial-gradient(circle at top right, #FF31310d, transparent);
 }
 
-@keyframes pulse-red {
-    0%, 100% { box-shadow: 0 4px 20px rgba(255,0,0,0.4); }
-    50% { box-shadow: 0 4px 35px rgba(255,0,0,0.7); }
+.feat-card:hover {
+  border-color: #FF313133; background: #FF313106;
+  transform: translateY(-3px); box-shadow: 0 10px 40px #00000055;
 }
 
-.btn-buy {
-    background: linear-gradient(135deg, #1a7a1a, #0d5c0d);
-    box-shadow: 0 4px 15px rgba(0,200,0,0.25);
+.feat-icon { font-size: 1.8rem; margin-bottom: 14px; display: block; }
+.feat-title { font-size: 1rem; font-weight: 700; color: #ccc; margin-bottom: 8px; }
+.feat-desc { font-size: 0.88rem; color: #555; line-height: 1.8; }
+
+.pricing-wrap {
+  display: flex; justify-content: center;
+  padding: 20px 20px 80px; position: relative; z-index: 10;
 }
 
-.btn-buy:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 25px rgba(0,200,0,0.4);
+.price-card {
+  background: #0f0f0f; border: 1px solid #FF313133;
+  border-radius: 24px; padding: 48px 52px;
+  max-width: 420px; width: 100%;
+  text-align: center; position: relative; overflow: hidden;
+  box-shadow: 0 0 80px #FF31310d, 0 30px 80px #00000066;
 }
 
-.btn-facebook {
-    background: linear-gradient(135deg, #1877F2, #1255b5);
-    box-shadow: 0 4px 15px rgba(24,119,242,0.3);
+.price-card::before {
+  content: ''; position: absolute; top: -1px; left: 20%; right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--red), transparent);
 }
 
-.btn-facebook:hover {
-    transform: scale(1.05);
-    background: linear-gradient(135deg, #1565c0, #0e3f8a);
+.price-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--red), var(--red3));
+  color: #fff; font-weight: 900;
+  font-size: 0.75rem; letter-spacing: 2px;
+  padding: 5px 16px; border-radius: 50px; margin-bottom: 24px;
 }
 
-/* Divider */
+.price-amount {
+  font-size: 4rem; font-weight: 900; color: var(--red);
+  line-height: 1; text-shadow: 0 0 40px #FF313144;
+}
+.price-amount sup { font-size: 1.4rem; vertical-align: top; margin-top: 12px; display: inline-block; }
+.price-note { color: #444; font-size: 0.85rem; margin-top: 4px; margin-bottom: 28px; }
+
+.price-features { list-style: none; text-align: right; margin-bottom: 32px; }
+.price-features li {
+  padding: 10px 0; border-bottom: 1px solid #ffffff08;
+  color: #888; font-size: 0.92rem;
+  display: flex; align-items: center; gap: 10px;
+}
+.price-features li:last-child { border-bottom: none; }
+.price-features li .chk { color: var(--red); font-size: 1rem; }
+
+.trial-note { margin-top: 16px; font-size: 0.82rem; color: #444; }
+.trial-note strong { color: var(--red); }
+
+footer {
+  position: relative; z-index: 10;
+  text-align: center; padding: 30px 20px 40px;
+  border-top: 1px solid #ffffff07;
+}
+
+.footer-wolf { font-size: 1.5rem; margin-bottom: 6px; }
+.footer-name { color: var(--red); font-weight: 700; letter-spacing: 2px; }
+.footer-copy { color: #333; font-size: 0.8rem; margin-top: 6px; }
+
 .divider {
-    width: 60px;
-    height: 2px;
-    background: #ff0000;
-    margin: 30px auto;
-    border-radius: 2px;
-    opacity: 0.5;
+  width: 60px; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--red), transparent);
+  margin: 0 auto 60px; opacity: 0.4;
+}
+
+@keyframes fadeDown {
+  from { opacity:0; transform:translateY(-18px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+@media(max-width:600px){
+  header { padding: 20px; }
+  .hero { padding: 40px 16px 30px; }
+  .price-card { padding: 36px 28px; }
+  .price-amount { font-size: 3rem; }
+  .screenshots img { width: 45%; }
 }
 </style>
 </head>
 <body>
-<div class="container">
 
-    <div class="logo-line">
-        <h1>AMEER WOLF</h1>
+<div class="bg-layer"></div>
+<div class="grid-bg"></div>
+
+<header>
+  <div class="brand">
+    <div class="wolf-icon">🐺</div>
+    <span class="brand-text">AmeerWolf</span>
+  </div>
+  <div class="header-right">
+    <div class="nav-badge">Pro Media Suite</div>
+    <button class="lang-btn" onclick="toggleLang()">🌐 English</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow"
+       data-ar="✦ النظام الاحترافي لتنظيم الوسائط ✦"
+       data-en="✦ Professional Media Organization System ✦">
+    ✦ النظام الاحترافي لتنظيم الوسائط ✦
+  </div>
+
+  <span class="wolf-small">🐺</span>
+  <h1>AMWO PRO<br>MEDIA ORGANIZER</h1>
+  <div class="version-badge">v2.2 — Press & Done</div>
+
+  <p class="hero-desc"
+     data-ar="انتقل بمكتبة أفلامك ومسلسلاتك إلى مستوى جديد من التنظيم. AMWO Pro Media Organizer ليس مجرد أداة لتغيير الأسماء، بل هو محرك ذكي صُمم ليوفر عليك ساعات من العمل اليدوي، مع ضمان توافق تام 100% مع أشهر مشغلات الوسائط مثل Infuse و Plex."
+     data-en="Take your movie and series library to a whole new level of organization. AMWO Pro Media Organizer is not just a renaming tool — it's a smart engine designed to save you hours of manual work, with 100% compatibility with the most popular media players like Infuse and Plex.">
+    انتقل بمكتبة أفلامك ومسلسلاتك إلى مستوى جديد من التنظيم. AMWO Pro Media Organizer ليس مجرد أداة لتغيير الأسماء، بل هو محرك ذكي صُمم ليوفر عليك ساعات من العمل اليدوي، مع ضمان توافق تام 100% مع أشهر مشغلات الوسائط مثل Infuse و Plex.
+  </p>
+
+  <div class="btn-group">
+    <a href="https://github.com/ameerwolfpromediaorganizer-gif/AMWO-Pro-Media-Organizer-v2.2Public/releases/download/v2.2/AmeerWolf_Pro_Setup_v2.2.zip"
+       class="btn btn-main" target="_blank" rel="noopener"
+       data-ar="⬇️ تجربة مجانية 24 ساعة — بدون التزام"
+       data-en="⬇️ Free Trial — 24 Hours, No Commitment">
+      ⬇️ تجربة مجانية 24 ساعة — بدون التزام
+    </a>
+    <a href="https://payhip.com/b/RQBk7" class="btn btn-buy" target="_blank" rel="noopener"
+       data-ar="🛒 اشترِ الآن — 29.99$" data-en="🛒 Buy Now — $29.99">
+      🛒 اشترِ الآن — 29.99$
+    </a>
+    <a href="https://www.facebook.com/share/1C4ctWAGJS/?mibextid=wwXIfr" class="btn btn-fb" target="_blank" rel="noopener"
+       data-ar="👍 تابعنا" data-en="👍 Follow Us">
+      👍 تابعنا
+    </a>
+  </div>
+</section>
+
+<!-- صورة رئيسية -->
+<div class="app-showcase">
+  <div class="app-frame">
+    <div class="fake-bar">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+      <span class="bar-title">AMWO Pro Media Organizer v2.2 — Press & Done</span>
     </div>
-
-    <span class="version-badge">🐺 Pro Media Organizer v2.2</span>
-
-    <p class="description">
-        النظام الأقوى لتنظيم وأرشفة الوسائط الرقمية — سريع، ذكي، احترافي.
-    </p>
-
-    <img src="AmeerWolf_Pro_Setup_v2.2.jpg" class="app-image" alt="AmeerWolf Pro Preview">
-
-    <div class="screenshots">
-        <img src="AR.jpg" alt="واجهة عربية">
-        <img src="AmeerWolf_Pro_Setup_v2.2.jpg" alt="البرنامج">
-        <img src="EN.jpg" alt="English Interface">
+    <div class="app-img-wrap">
+      <img src="AmeerWolf_Pro_Setup_v2.2.jpg" class="app-img" alt="AMWO Pro Media Organizer">
     </div>
-
-    <div class="button-group">
-        <a href="https://github.com/ameerwolfpromediaorganizer-gif/AmeerWolf-Pro-Media-Organizer-v2.2/releases/download/v2.2/AmeerWolf_Pro_Setup_v2.2.zip" class="btn-custom btn-download">
-            ⬇️ 💡 🎁 فترة تجريبية مجانية لمدة 24 ساعة بدون أي التزام!
-        </a>
-        <a href="https://payhip.com/b/RQBk7" class="btn-custom btn-buy">
-            🛒 اشترِ النسخة الكاملة (29.99$)
-        </a>
-        <a href="https://www.facebook.com/share/1C4ctWAGJS/?mibextid=wwXIfr" class="btn-custom btn-facebook">
-            👍 تابعنا على فيسبوك
-        </a>
-    </div>
-
-    <div class="divider"></div>
-
+  </div>
 </div>
+
+<!-- صور صغيرة -->
+<div class="screenshots">
+  <img src="AR.jpg" alt="واجهة عربية">
+  <img src="AmeerWolf_Pro_Setup_v2.2.jpg" alt="البرنامج">
+  <img src="EN.jpg" alt="English Interface">
+</div>
+
+<!-- مميزات -->
+<div class="section">
+  <div class="section-label"
+       data-ar="لماذا AMWO Pro Media Organizer"
+       data-en="Why AMWO Pro Media Organizer">
+    لماذا AMWO Pro Media Organizer
+  </div>
+  <div class="section-title"
+       data-ar="المميزات القوية"
+       data-en="Powerful Features">
+    المميزات القوية
+  </div>
+
+  <div class="features-grid">
+
+    <div class="feat-card">
+      <span class="feat-icon">⚡</span>
+      <div class="feat-title"
+           data-ar="سرعة خارقة في التعرف"
+           data-en="Advanced Scraping Engine">سرعة خارقة في التعرف</div>
+      <div class="feat-desc"
+           data-ar="يعتمد على خوارزميات ذكية لجلب أدق التفاصيل (البوسترات، الخلفيات، الممثلين، والقصة) من المصادر العالمية بضغطة زر واحدة."
+           data-en="Uses smart algorithms to fetch precise details — posters, backdrops, cast, and storylines — from global sources with a single click.">
+        يعتمد على خوارزميات ذكية لجلب أدق التفاصيل (البوسترات، الخلفيات، الممثلين، والقصة) من المصادر العالمية بضغطة زر واحدة.
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <span class="feat-icon">🛠️</span>
+      <div class="feat-title"
+           data-ar="إعادة تسمية ذكية"
+           data-en="Smart Renamer">إعادة تسمية ذكية</div>
+      <div class="feat-desc"
+           data-ar="وداعاً للأسماء العشوائية والرموز المزعجة. يُنظّم ملفاتك ويُصنّفها في مجلدات مرتبة تلقائياً بناءً على السنة والجودة والموسم."
+           data-en="Say goodbye to random names and annoying symbols. Automatically organizes and categorizes files into sorted folders based on year, quality, and season.">
+        وداعاً للأسماء العشوائية والرموز المزعجة. يُنظّم ملفاتك ويُصنّفها في مجلدات مرتبة تلقائياً بناءً على السنة والجودة والموسم.
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <span class="feat-icon">📂</span>
+      <div class="feat-title"
+           data-ar="دعم ملفات NFO المتقدمة"
+           data-en="Advanced NFO File Support">دعم ملفات NFO المتقدمة</div>
+      <div class="feat-desc"
+           data-ar="يُنشئ ملفات بيانات وصفية دقيقة تجعل مكتبتك تظهر بشكل سينمائي فوري على أي جهاز أو مشغل وسائط."
+           data-en="Creates precise metadata files that make your library appear cinematically on any device or media player — instantly.">
+        يُنشئ ملفات بيانات وصفية دقيقة تجعل مكتبتك تظهر بشكل سينمائي فوري على أي جهاز أو مشغل وسائط.
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <span class="feat-icon">🎯</span>
+      <div class="feat-title"
+           data-ar="واجهة مستخدم احترافية"
+           data-en="Professional User Interface">واجهة مستخدم احترافية</div>
+      <div class="feat-desc"
+           data-ar="بسيطة للمبتدئين وقوية جداً للمحترفين — إدارة آلاف الملفات أصبحت في غاية السهولة."
+           data-en="Simple for beginners yet extremely powerful for professionals — managing thousands of files has never been easier.">
+        بسيطة للمبتدئين وقوية جداً للمحترفين — إدارة آلاف الملفات أصبحت في غاية السهولة.
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <span class="feat-icon">💎</span>
+      <div class="feat-title"
+           data-ar="دقة الترجمات والملحقات"
+           data-en="Subtitle & Extras Precision">دقة الترجمات والملحقات</div>
+      <div class="feat-desc"
+           data-ar="تنظيم ذكي لملفات الترجمة والملحقات لضمان عدم ضياع أي تفصيل تقني داخل مجلد الفيلم."
+           data-en="Smart organization of subtitle and extra files to ensure no technical detail is ever lost inside the movie folder.">
+        تنظيم ذكي لملفات الترجمة والملحقات لضمان عدم ضياع أي تفصيل تقني داخل مجلد الفيلم.
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <span class="feat-icon">🌐</span>
+      <div class="feat-title"
+           data-ar="توافق 100% مع Infuse و Plex"
+           data-en="100% Compatible with Infuse & Plex">توافق 100% مع Infuse و Plex</div>
+      <div class="feat-desc"
+           data-ar="هيكل مكتبة جاهز فوراً لـ Infuse وPlex وJellyfin وKodi — بدون أي إعدادات إضافية."
+           data-en="Library structure instantly ready for Infuse, Plex, Jellyfin & Kodi — no extra configuration needed.">
+        هيكل مكتبة جاهز فوراً لـ Infuse وPlex وJellyfin وKodi — بدون أي إعدادات إضافية.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- تسعير -->
+<div class="pricing-wrap">
+  <div class="price-card">
+    <div class="price-badge" data-ar="🐺 النسخة الكاملة" data-en="🐺 Full Version">🐺 النسخة الكاملة</div>
+    <div class="price-amount"><sup>$</sup>29.99</div>
+    <div class="price-note" data-ar="دفع مرة واحدة — ترخيص دائم" data-en="One-time payment — Lifetime license">دفع مرة واحدة — ترخيص دائم</div>
+
+    <ul class="price-features">
+      <li><span class="chk">✦</span> <span data-ar="وصول كامل لكل المميزات"  data-en="Full access to all features">وصول كامل لكل المميزات</span></li>
+      <li><span class="chk">✦</span> <span data-ar="تحديثات مجانية"           data-en="Free updates">تحديثات مجانية</span></li>
+      <li><span class="chk">✦</span> <span data-ar="دعم فني مباشر"            data-en="Direct technical support">دعم فني مباشر</span></li>
+      <li><span class="chk">✦</span> <span data-ar="ترخيص لجهاز واحد"         data-en="Single device license">ترخيص لجهاز واحد</span></li>
+      <li><span class="chk">✦</span> <span data-ar="تغيير الجهاز مرتين"       data-en="Transfer to another device twice">تغيير الجهاز مرتين</span></li>
+    </ul>
+
+    <a href="https://payhip.com/b/RQBk7" class="btn btn-buy" target="_blank" rel="noopener"
+       data-ar="🛒 اشترِ الآن — 29.99$" data-en="🛒 Buy Now — $29.99"
+       style="width:100%;justify-content:center;border-radius:14px;font-size:1.05rem;">
+      🛒 اشترِ الآن — 29.99$
+    </a>
+
+    <p class="trial-note">
+      <span data-ar="أو " data-en="Or ">أو </span>
+      <strong data-ar="جرّب مجاناً 24 ساعة" data-en="Try free for 24 hours">جرّب مجاناً 24 ساعة</strong>
+      <span data-ar=" بدون أي التزام" data-en=" with no commitment"> بدون أي التزام</span>
+    </p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-wolf">🐺</div>
+  <div class="footer-name">AmeerWolf Pro Media Suite</div>
+  <div class="footer-copy" data-ar="© 2026 — جميع الحقوق محفوظة" data-en="© 2026 — All Rights Reserved">© 2026 — جميع الحقوق محفوظة</div>
+</footer>
+
+<script>
+let currentLang = 'ar';
+
+function toggleLang() {
+  currentLang = currentLang === 'ar' ? 'en' : 'ar';
+  const isAr = currentLang === 'ar';
+
+  document.documentElement.lang = currentLang;
+  document.documentElement.dir = isAr ? 'rtl' : 'ltr';
+  document.querySelector('.lang-btn').textContent = isAr ? '🌐 English' : '🌐 عربي';
+
+  document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+    el.innerHTML = el.getAttribute(isAr ? 'data-ar' : 'data-en');
+  });
+}
+</script>
 </body>
 </html>
